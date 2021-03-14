@@ -18,9 +18,6 @@ module.exports = (sequelize, Sequelize) => {
 			type: Sequelize.INTEGER
     }    
 	});
-<<<<<<< HEAD
 
-=======
->>>>>>> b3f5867dd9289d5035d317d0e3527d8db1ce59a9
 	return Patient;
 }
