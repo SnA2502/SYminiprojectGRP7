@@ -1,0 +1,67 @@
+ <!-- PATIENT-->
+ <div id="patient" class="parallax section db" data-stellar-background-ratio="0.4" style="background:#fff;" data-scroll-id="patient">
+    <div class="container">
+        
+        <div class="heading">
+            <h2></h2>
+            <h2></h2>
+            <span class="icon-logo"><img src="../../assets/images/LogoEPatDoc.png" alt="#"/></span>
+            <h2>PATIENT</h2>
+        </div>
+        
+        <div class="row dev-list text-center">
+            <div id="service" class="services wow fadeIn">
+                <div class="container">
+                    <div class="row">
+                        <!-- <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12"> -->
+                            <div class="center">
+                               <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="appointment-form">
+                                    <h3><span></span>PATIENT LOGIN</h3>
+                                    <div class="form">
+                                        <form action="index.html">
+                                            <fieldset>
+                                            <!-- </form> -->
+                                            <form (ngSubmit)="onSubmit()"> 
+                                              <!-- First name -->   
+                                              <div class="form-group">
+                                                <label for="firstname">First Name:</label>
+                                                <input type="text" class="form-control" placeholder="Enter Firstname" 
+                                                          id="firstname" required [(ngModel)]="patient.firstname" name="firstname">
+                                              </div>
+                                              <!-- Last name -->
+                                              <div class="form-group">
+                                                  <label for="lastname">Last Name:</label>
+                                                  <input type="text" class="form-control" placeholder="Enter Lastname" 
+                                                            id="lastname" required [(ngModel)]="patient.lastname" name="lastname">
+                                              </div>  
+                                              <!-- Email -->
+                                              <div class="form-group">
+                                                  <label for="email">Email:</label>
+                                                  <input type="text" class="form-control" placeholder="Enter Email" 
+                                                            id="email" required [(ngModel)]="patient.email" name="email">
+                                              </div>        
+                                              
+                                              <!-- Age -->
+                                              <div class="form-group">
+                                                <label for="age">Age</label>
+                                                <input type="number" class="form-control" placeholder="Enter Age" 
+                                                            id="age" required [(ngModel)]="patient.age" name="age">
+                                              </div>
+                                           
+                                              <button type="submit" class="btn btn-success">Submit</button>
+                                            </form>
+                                            </fieldset>
+                                        </form>
+                                      </div>
+                                      <app-message></app-message>
+                                </div>
+                            </div>
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+       </div>
+   </div>
+
+

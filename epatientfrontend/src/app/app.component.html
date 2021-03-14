@@ -1,0 +1,8 @@
+
+  <app-header></app-header>
+  <app-home *ngIf="router.url == '/'"></app-home>
+  <app-intro *ngIf="router.url == '/'"></app-intro>
+  <app-patient *ngIf="router.url == '/'"></app-patient> 
+  <app-doctor *ngIf="router.url == '/'"></app-doctor>
+  <app-admin *ngIf="router.url == '/'"></app-admin>
+  <router-outlet></router-outlet>
