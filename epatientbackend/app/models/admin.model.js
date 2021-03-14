@@ -13,6 +13,6 @@ module.exports = (sequelize, Sequelize) => {
   	},
 	   
 	});
-   hello
+   
 	return Admin;
 }
