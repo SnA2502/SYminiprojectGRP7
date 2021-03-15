@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "epatientdocpro"
+    }
+  },
+  "defaultProject": "epatientdocpro",
+  "cli": {
+    "analytics": "82f18d05-844b-4ee8-919b-a803b3d73f5f"
+  }
 }
