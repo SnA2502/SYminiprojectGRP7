@@ -23,19 +23,36 @@ Review it with me first before creating the backend apis <br />
 6. Recordings <br />
 Day1: https://drive.google.com/drive/folders/1J1oR1_T64iEVTcTsXIEexx2ZN6quxEPJ?usp=sharing <br />
 
+
+
 ```
+
 Methods					URLs 					Actions
 -------------------------------------------------------
-GET						patient/all			get all patients/list
+GET						patient/all		    	get all patients/list
 GET						patient/user/:id		get patients by id
 POST					patient/create			add new patient
 PUT						patient/user/:id		update patient by id
 DELETE					patient/user/:id		delete patient by id
 DELETE					patient/user			remove all patients
 
+Doctor
+
+GET						doctor/all		    	get all doctor/list   
+GET						doctor/user/:id	      	get doctor by id
+POST					doctor/create			add new doctor
+PUT						doctor/user/:id		    update doctor by id
+DELETE					doctor/user/:id		    delete doctor by id
+DELETE					doctor/user			    remove all doctors
 
 Admin
-Doctor
+
+GET						admin/user/:id	      	get admin by id
+GET						admin/all		    	get all admin/list   *doubt
+
+//model.js for prescription ?
+
+
 
 GET method on http://localhost:5000/api/patient/all 
 
@@ -53,3 +70,15 @@ ng g service doctor
 ng g class admin
 ng g class doctor
 
+things to do
+--
+authentication
+profile name/id left corner
+add pages 
+   - patient list 
+   - doctor list
+   - admin list *
+   - edit doctor/patient
+   - prescription page
+   - view prescriptions 
+logout
