@@ -1,7 +1,7 @@
 let express = require('express');
 let router = express.Router();
  
-const patient = require('../controllers/controller.js');
+const patient = require('../controllers/patient.controller.js');
 
 router.post('/api/patient/create', patient.create);
 router.get('/api/patient/all', patient.retrieveAllPatients);
