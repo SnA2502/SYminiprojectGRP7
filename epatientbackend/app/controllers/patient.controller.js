@@ -2,7 +2,7 @@
 const db = require('../config/db.config.js');
 const Patient = db.Patient;
 
-exports.create = (req, res) => {
+exports.create = (req, res) => { //executes
     let patient = {};
 
     try{
@@ -28,7 +28,7 @@ exports.create = (req, res) => {
     }
 }
 
-exports.retrieveAllPatients = (req, res) => {
+exports.retrieveAllPatients = (req, res) => { //executes
     // find all Patient information from 
     Patient.findAll()
         .then(patientInfos => {
@@ -50,7 +50,7 @@ exports.retrieveAllPatients = (req, res) => {
 
 exports.getPatientById = (req, res) => {
   // find all Patient information from 
-  let patientId = req.params.id;
+  let patientId = req.params.patient_id;
   Patient.findByPk(patientId)
       .then(patient => {
           res.status(200).json({
