@@ -29,26 +29,26 @@ Day1: https://drive.google.com/drive/folders/1J1oR1_T64iEVTcTsXIEexx2ZN6quxEPJ?u
 
 Methods					URLs 					Actions
 -------------------------------------------------------
-GET						patient/all		    	get all patients/list
-GET						patient/user/:id		get patients by id
-POST					patient/create			add new patient
-PUT						patient/user/:id		update patient by id
-DELETE					patient/user/:id		delete patient by id
-DELETE					patient/user			remove all patients
+GET						patient/all		    	get all patients/list   
+GET						patient/user/:id		get patients by id      
+POST					patient/create			add new patient       
+PUT						patient/user/:id		update patient by id  //feb
+DELETE					patient/user/:id		delete patient by id  //feb
+DELETE					patient/user			remove all patients   //rachel
 
 Doctor
 
-GET						doctor/all		    	get all doctor/list   
-GET						doctor/user/:id	      	get doctor by id
-POST					doctor/create			add new doctor
-PUT						doctor/user/:id		    update doctor by id
-DELETE					doctor/user/:id		    delete doctor by id
-DELETE					doctor/user			    remove all doctors
+GET						doctor/all		    	get all doctor/list      //fla
+GET						doctor/user/:id	      	get doctor by id   //rachel
+POST					doctor/create			      add new doctor        //achsha
+PUT						doctor/user/:id		    update doctor by id  //rachel
+DELETE					doctor/user/:id		    delete doctor by id  //fla
+DELETE					doctor/user			    remove all doctors      //achsha
 
 Admin
 
-GET						admin/user/:id	      	get admin by id
-GET						admin/all		    	get all admin/list   *doubt
+GET						admin/user/:id	      	get admin by id   //feb
+GET						admin/all		    	get all admin/list   //achsha
 
 //model.js for prescription ?
 
