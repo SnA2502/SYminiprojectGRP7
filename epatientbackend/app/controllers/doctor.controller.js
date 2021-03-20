@@ -1,6 +1,6 @@
 const db = require('../config/db.config.js');
 const Doctor = db.Doctor;
-exports.create = (req, res) => { //executes
+exports.create = (req, res) => { 
     let doctor = {};
 
     try{
@@ -26,11 +26,11 @@ exports.create = (req, res) => { //executes
     }
 }
 exports.retrieveAllDoctor = (req, res) => { 
-    // find all Patient information from 
+    // find all DOCTOR information from 
     Doctor.findAll()
         .then(doctorInfos => {
             res.status(200).json({
-                message: "Get all Patients' Infos Successfully!",
+                message: "Get all Doctors' Infos Successfully!",
                 doctors: doctorInfos
             });
         })
@@ -45,50 +45,48 @@ exports.retrieveAllDoctor = (req, res) => {
         });
 }
 
-exports.deleteById = async (req, res) =>
- { // let doctor = {};
 
-         try{
-             let doctorId = req.params.doctor_id;
-             let doctor = await Doctor.findByPk(doctorId);
-    
-             if(!doctor){
-                 res.status(404).json({
-                     message: "Does Not exist a Customer with id = " + doctorId,
-                     error: "404",
-                 });
-             } else {
-                 await doctor.destroy();
-                 res.status(200).json({
-                     message: "Delete Successfully a Customer with id = " + doctorId,
-                     doctor: doctor,
+exports.getDoctorById = (req, res) => { 
+        // find all Doctor information from 
+        let doctorId = req.params.id;
+        Doctor.findByPk(doctorId)
+            .then(doctor => {
+                res.status(200).json({
+                    message: " Successfully Get a Doctor with id = " + doctorId,
+                    doctors: doctor
+                });
+            })
+            . catch(error => {
+              // log on console
+              console.log(error);
+      
+              res.status(500).json({
+                  message: "Error!",
+                  error: error
+              });
+            });
+      }
+exports.deleteById = async (req, res) => { //
+             try{
+                 let doctorId = req.params.id;
+                 let doctor = await Doctor.findByPk(doctorId);
+                 if(!doctor){
+                     res.status(404).json({
+                       message: "Does Not exist a doctor with id = " + doctorId,
+                         error: "404",
+                     });
+                 } else {
+                     await doctor.destroy();
+                     res.status(200).json({
+                         message: "Delete Successfully a Doctor with id = " + doctorId,
+                         doctors: doctor,
+                     });
+                 }
+             } catch(error) {
+                res.status(500).json({
+                     message: "Error -> Can NOT delete a Doctor with id = " + req.params.id,
+                     error: error.message,
                  });
              }
-         } catch(error) {
-             res.status(500).json({
-                 message: "Error -> Can NOT delete a customer with id = " + req.params.id,
-                 error: error.message,
-             });
-         }
-     }
-exports.getDoctorById = (req, res) => {
-    // find all Patient information from 
-    let doctorId = req.params.doctor_id;
-    Doctor.findByPk(doctorId)
-        .then(doctor => {
-            res.status(200).json({
-                message: " Successfully Get a Patient with id = " + doctorId,
-                doctors: doctor
-            });
-        })
-        . catch(error => {
-          // log on console
-          console.log(error);
-  
-          res.status(500).json({
-              message: "Error!",
-              error: error
-          });
-        });
-  }
-  
+        }
+            

@@ -29,21 +29,21 @@ Day1: https://drive.google.com/drive/folders/1J1oR1_T64iEVTcTsXIEexx2ZN6quxEPJ?u
 
 Methods					URLs 					Actions
 -------------------------------------------------------
-GET						patient/all		    	get all patients/list   
-GET						patient/user/:id		get patients by id      
-POST					patient/create			add new patient       
-PUT						patient/user/:id		update patient by id  //feb
+GET						patient/all		    	get all patients/list        done
+GET						patient/user/:id		get patients by id           done
+POST					patient/create			add new patient                 done
+PUT						patient/user/:id		update patient by id  //feb  
 DELETE					patient/user/:id		delete patient by id  //feb
 DELETE					patient/user			remove all patients   //rachel
 
 Doctor
 
-GET						doctor/all		    	get all doctor/list      //fla
-GET						doctor/user/:id	      	get doctor by id   //rachel
-POST					doctor/create			      add new doctor        //achsha
-PUT						doctor/user/:id		    update doctor by id  //rachel
-DELETE					doctor/user/:id		    delete doctor by id  //fla
-DELETE					doctor/user			    remove all doctors      //achsha
+GET						doctor/all		    	get all doctor/list      //fla    done
+GET						doctor/user/:id	      	get doctor by id   //rachel done
+POST					doctor/create			      add new doctor        //achsh  done
+PUT						doctor/user/:id		    update doctor by id  //rachel 
+DELETE					doctor/user/:id		    delete doctor by id  //fla     done
+DELETE					doctor/user			    remove all doctors      //achsha  *not required
 
 Admin
 
