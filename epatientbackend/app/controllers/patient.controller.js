@@ -69,7 +69,49 @@ exports.getPatientById = (req, res) => {
       });
 }
 
-
+/*exports.updateById = async (req, res) => {
+         try{
+             let patientId = req.params.id;
+         let patient = await Patient.findByPk(patientId);
+        
+         if(!patient){
+             // return a response to client
+                 res.status(404).json({
+                     message: "Not Found for updating a patient with id = " + patientId,
+                     patient : "",
+                     error: "404"
+                });
+             } else {    
+                 // update new change to database
+                 let updatedObject = {
+                     firstname: req.body.firstname,
+                     lastname: req.body.lastname,
+                     email: req.body.email,
+                     age: req.body.age
+                 }
+                 let result = await Patient.update(updatedObject, {returning: true, where: {id: patientId}});
+                
+    //             // return the response to client
+                 if(!result) {
+                    res.status(500).json({
+                         message: "Error -> Can not update a patient with id = " + req.params.id,
+                         error: "Can NOT Updated",
+                     });
+                 }
+    
+                 res.status(200).json({
+                     message: "Update successfully a Patient with id = " + patientId,
+                     patient: updatedObject,
+                 });
+             }
+         } catch(error){
+             res.status(500).json({
+                 message: "Error -> Can not update a patient with id = " + req.params.id,
+                 error: error.message
+             });
+         }
+     }
+*/
 // exports.filteringByAge = (req, res) => {
 //   let age = req.query.age;
 

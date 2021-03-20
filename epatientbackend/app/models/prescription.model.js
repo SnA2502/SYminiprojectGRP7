@@ -13,13 +13,11 @@ module.exports = (sequelize, Sequelize) => {
 			type: Sequelize.INTEGER,
             foreignKey: true
   	},
-	  email: {
-			type: Sequelize.STRING
-	  },
+	  
 	  date: {
 			type: Sequelize.TIMESTAMP
     }    
 	});
 
-	return Patient;
+	return Prescription;
 }

@@ -32,24 +32,23 @@ Methods					URLs 					Actions
 GET						patient/all		    	get all patients/list        done
 GET						patient/user/:id		get patients by id           done
 POST					patient/create			add new patient                 done
-PUT						patient/user/:id		update patient by id  //feb  
-DELETE					patient/user/:id		delete patient by id  //feb
-DELETE					patient/user			remove all patients   //rachel
+PUT						patient/user/:id		update patient by id    //feb  
+DELETE					patient/user/:id		delete patient by id    //feb   
 
 Doctor
 
 GET						doctor/all		    	get all doctor/list      //fla    done
 GET						doctor/user/:id	      	get doctor by id   //rachel done
-POST					doctor/create			      add new doctor        //achsh  done
-PUT						doctor/user/:id		    update doctor by id  //rachel 
-DELETE					doctor/user/:id		    delete doctor by id  //fla     done
-DELETE					doctor/user			    remove all doctors      //achsha  *not required
+POST					   doctor/create			      add new doctor     //achsh  done
+PUT						doctor/user/:id		    update doctor by id  //rachel done
+DELETE					doctor/user/:id		    delete doctor by id  //fla    done
+
 
 Admin
 
-GET						admin/user/:id	      	get admin by id   //feb
-GET						admin/all		    	get all admin/list   //achsha
-
+GET						admin/user/:id	      	get admin by id   //feb           done
+GET						admin/all		    	get all admin/list   //achsha        done
+POST                 admin/create             create admin                     done
 //model.js for prescription ?
 
 
