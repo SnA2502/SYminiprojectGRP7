@@ -66,6 +66,53 @@ exports.getDoctorById = (req, res) => {
               });
             });
       }
+    exports.updateById = async (req, res) => {
+        try{
+            let doctorId = req.params.id;
+           
+            let doctor = await Doctor.findByPk(doctorId);
+        
+            if(!doctor){
+                // return a response to client
+                res.status(404).json({
+                    message: "Not Found for updating a doctor with id = " + doctorId,
+                    doctor: "",
+                    error: "404"
+                });
+            } else {    
+                // update new change to database
+                let updatedObject = {
+                    doctor_id:doctorId,
+                    firstname: req.body.firstname,
+                    lastname:req.body. lastname,
+                    email:req.body. email,
+                    
+                    age: req.body.age
+                }
+                let result = await Doctor.update(updatedObject, {returning: true, where: {doctor_id: doctorId }});
+                
+                // return the response to client
+                if(!result) {
+                    res.status(500).json({
+                        message: "Error -> Can not update a doctor with id = " + req.params.id,
+                        error: "Can NOT Updated",
+                    });
+              }
+              
+             
+                 res.status(200).json({
+                     message: "Update successfully a Doctor with id = " + doctorId,
+                     doctor: updatedObject,
+                 });
+             
+         } 
+        }catch(error){
+             res.status(500).json({
+                 message: "Error -> Can not update a doctor with id = " + req.params.id,
+                 error: error.message
+             });
+         }
+     }
 exports.deleteById = async (req, res) => { //
              try{
                  let doctorId = req.params.id;
