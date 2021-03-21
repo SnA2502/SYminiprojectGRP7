@@ -1,8 +1,8 @@
 const env = {
-  database: 'justindb',
-  username: 'postgres',
-  password: 'postgres',
-  host: 'localhost',
+  database: 'xsguchft',
+  username: 'xsguchft',
+  password: 'Nu0FM41OkheedK61hkZVrYvfqWS-rr2a',
+  host: 'queenie.db.elephantsql.com',
   dialect: 'postgres',
   pool: {
     max: 5,
