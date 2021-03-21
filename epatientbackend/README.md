@@ -80,4 +80,11 @@ add pages
    - edit doctor/patient
    - prescription page
    - view prescriptions 
-logout
+
+usne kiya   
+add patientt 
+add doctor
+
+button-logout
+
+
