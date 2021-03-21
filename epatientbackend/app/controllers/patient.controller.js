@@ -73,7 +73,7 @@ exports.getPatientById = (req, res) => {
 // exports.filteringByAge = (req, res) => {
 //   let age = req.query.age;
 
-//     Customer.findAll({
+//     Patient.findAll({
 //                       attributes: ['id', 'firstname', 'lastname', 'age', 'address', 'copyrightby'],
 //                       where: {age: age}
 //                     })
@@ -99,7 +99,7 @@ exports.getPatientById = (req, res) => {
   
 //     const offset = page ? page * limit : 0;
   
-//     Customer.findAndCountAll({ limit: limit, offset:offset })
+//     Patient.findAndCountAll({ limit: limit, offset:offset })
 //       .then(data => {
 //         const totalPages = Math.ceil(data.count / limit);
 //         const response = {
@@ -134,7 +134,7 @@ exports.getPatientById = (req, res) => {
 
 //     console.log("offset = " + offset);
   
-//     Customer.findAndCountAll({
+//     Patient.findAndCountAll({
 //                                 attributes: ['id', 'firstname', 'lastname', 'age', 'address'],
 //                                 where: {age: age}, 
 //                                 order: [
@@ -169,70 +169,70 @@ exports.getPatientById = (req, res) => {
 //   }      
 // }
 
-// exports.updateById = async (req, res) => {
-//     try{
-//         let customerId = req.params.id;
-//         let customer = await Customer.findByPk(customerId);
+exports.updateById = async (req, res) => {
+    try{
+        let patientId = req.params.id;
+        let patient = await Patient.findByPk(patientId);
     
-//         if(!customer){
-//             // return a response to client
-//             res.status(404).json({
-//                 message: "Not Found for updating a customer with id = " + customerId,
-//                 customer: "",
-//                 error: "404"
-//             });
-//         } else {    
-//             // update new change to database
-//             let updatedObject = {
-//                 firstname: req.body.firstname,
-//                 lastname: req.body.lastname,
-//                 address: req.body.address,
-//                 age: req.body.age
-//             }
-//             let result = await Customer.update(updatedObject, {returning: true, where: {id: customerId}});
+        if(!patient){
+            // return a response to client
+            res.status(404).json({
+                message: "Not Found for updating a patient with id = " + patientId,
+                patient: "",
+                error: "404"
+            });
+        } else {    
+            // update new change to database
+            let updatedObject = {
+                firstname: req.body.firstname,
+                lastname: req.body.lastname,
+                email: req.body.email,
+                age: req.body.age
+            }
+            let result = await Patient.update(updatedObject, {returning: true, where: {patient_id: patientId}});
             
-//             // return the response to client
-//             if(!result) {
-//                 res.status(500).json({
-//                     message: "Error -> Can not update a customer with id = " + req.params.id,
-//                     error: "Can NOT Updated",
-//                 });
-//             }
+            // return the response to client
+            if(!result) {
+                res.status(500).json({
+                    message: "Error -> Can not update a patient with id = " + req.params.id,
+                    error: "Can NOT Updated",
+                });
+            }
 
-//             res.status(200).json({
-//                 message: "Update successfully a Customer with id = " + customerId,
-//                 customer: updatedObject,
-//             });
-//         }
-//     } catch(error){
-//         res.status(500).json({
-//             message: "Error -> Can not update a customer with id = " + req.params.id,
-//             error: error.message
-//         });
-//     }
-// }
+            res.status(200).json({
+                message: "Update successfully a Patient with id = " + patientId,
+                patient: updatedObject,
+            });
+        }
+    } catch(error){
+        res.status(500).json({
+            message: "Error -> Can not update a patient with id = " + req.params.id,
+            error: error.message
+        });
+    }
+}
 
-// exports.deleteById = async (req, res) => {
-//     try{
-//         let customerId = req.params.id;
-//         let customer = await Customer.findByPk(customerId);
+exports.deleteById = async (req, res) => {
+    try{
+        let patientId = req.params.id;
+        let patient = await Patient.findByPk(patientId);
 
-//         if(!customer){
-//             res.status(404).json({
-//                 message: "Does Not exist a Customer with id = " + customerId,
-//                 error: "404",
-//             });
-//         } else {
-//             await customer.destroy();
-//             res.status(200).json({
-//                 message: "Delete Successfully a Customer with id = " + customerId,
-//                 customer: customer,
-//             });
-//         }
-//     } catch(error) {
-//         res.status(500).json({
-//             message: "Error -> Can NOT delete a customer with id = " + req.params.id,
-//             error: error.message,
-//         });
-//     }
-// }
+        if(!patient){
+            res.status(404).json({
+                message: "Does Not exist a Patient with id = " + patientId,
+                error: "404",
+            });
+        } else {
+            await patient.destroy();
+            res.status(200).json({
+                message: "Delete Successfully a Patient with id = " + patientId,
+                patient: patient,
+            });
+        }
+    } catch(error) {
+        res.status(500).json({
+            message: "Error -> Can NOT delete a patient with id = " + req.params.id,
+            error: error.message,
+        });
+    }
+}

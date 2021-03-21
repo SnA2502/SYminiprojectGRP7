@@ -2,7 +2,7 @@ const env = {
   database: 'justindb',
   username: 'postgres',
   password: 'postgres',
-  host: 'localhost',
+  host: 'local:host',
   dialect: 'postgres',
   pool: {
     max: 5,
