@@ -68,6 +68,17 @@
                                 <div class="row">
                                   <div class="form-group">
                                     <div class="bottom">
+                                        <nav>
+                                            <button routerLink="/listdoctors" routerLinkActive='active'>View Doctors</button>
+                                         </nav>
+                                      <!-- <button type="button">Add Doctor</button> -->
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="form-group">
+                                    <div class="bottom">
                                       <!-- <a href="addpat.html"><button type="button">Add Patient</button></a> -->
                                       <nav>
                                         <button routerLink="/admaddpat" routerLinkActive='active'>Add Patient</button>
@@ -116,3 +127,16 @@
       </div>
     </div>
   </div>
+
+  <script>
+    $(document).ready(function() {
+      (function(){
+        let pathname = window.location.pathname;
+        if(pathname == "/"){
+            $("#li_list_doctors").removeClass("active");
+        } else if (pathname == "/listdoctors") {
+            $("#li_list_doctors").addClass("active");
+        }
+      })();
+    });
+  </script>

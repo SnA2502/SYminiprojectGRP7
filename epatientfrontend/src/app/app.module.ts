@@ -27,6 +27,7 @@ import { PatprescriptionComponent } from './patprescription/patprescription.comp
 import { AddprescribComponent } from './addprescrib/addprescrib.component';
 import { MessageComponent } from './message/message.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ListdoctorComponent } from './listdoctor/listdoctor.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { HttpClientModule } from '@angular/common/http';
     DocprescriptionComponent,
     PatprescriptionComponent,
     AddprescribComponent,
-    MessageComponent
+    MessageComponent,
+    ListdoctorComponent
   ],
   imports: [
     BrowserModule,
