@@ -23,7 +23,6 @@ Review it with me first before creating the backend apis <br />
 6. Recordings <br />
 Day1: https://drive.google.com/drive/folders/1J1oR1_T64iEVTcTsXIEexx2ZN6quxEPJ?usp=sharing <br />
 
-ycikthckgckhgck
 
 7. Test
 
