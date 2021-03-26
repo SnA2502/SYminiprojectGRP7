@@ -3,5 +3,6 @@ export class Patient {
 	firstname: string;
     lastname: string;
 	email: string;
-	age: number
+	age: number;
+	prescription: string
 }

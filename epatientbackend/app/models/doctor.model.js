@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
 	const Doctor = sequelize.define('doctor', {	
-	  doctor_id: {
+	  id: {
 			type: Sequelize.INTEGER,
 			autoIncrement: true,
 			primaryKey: true
@@ -13,10 +13,8 @@ module.exports = (sequelize, Sequelize) => {
   	},
 	  email: {
 			type: Sequelize.STRING
-	  },
-	  age: {
-			type: Sequelize.INTEGER
-    }    
+	  }
+	   
 	});
 
 	return Doctor;

@@ -2,7 +2,8 @@
 const db = require('../config/db.config.js');
 const Patient = db.Patient;
 
-exports.create = (req, res) => {
+
+exports.create = (req, res) => { 
     let patient = {};
 
     try{
@@ -28,7 +29,7 @@ exports.create = (req, res) => {
     }
 }
 
-exports.retrieveAllPatients = (req, res) => {
+exports.retrieveAllPatients = (req, res) => { //executes
     // find all Patient information from 
     Patient.findAll()
         .then(patientInfos => {
@@ -69,6 +70,68 @@ exports.getPatientById = (req, res) => {
       });
 }
 
+
+
+exports.createPrescription = async (req, res) => {
+         try{
+         let patientId = req.params.id;
+         let patient = await Patient.findByPk(patientId);
+        
+         if(!patient){
+             // return a response to client
+                 res.status(404).json({
+                     message: "Not Found for updating a patient with id = " + patientId,
+                     patient : "",
+                     error: "404"
+                });
+             } else {    
+                 // update new change to database
+                 let updatedObject = {
+                    prescription: req.body.prescription
+                 }
+                 let result = await Patient.update(updatedObject, {returning: true, where: {id: patientId}});
+                
+                // return the response to client
+                 if(!result) {
+                    res.status(500).json({
+                         message: "Error -> Can not update a patient with id = " + req.params.id,
+                         error: "Can not Update Prescription",
+                     });
+                 }
+    
+                 res.status(200).json({
+                     message: "Update successfully a Patient with id = " + patientId,
+                     patient: updatedObject,
+                 });
+             }
+         } catch(error){
+             res.status(500).json({
+                 message: "Error -> Can not update a patient with id = " + req.params.id,
+                 error: error.message
+             });
+         }
+     }
+
+     exports.getPrescriptionById = (req, res) => {
+        // find all Patient information from 
+        let patientId = req.params.id;
+        Patient.findByPk(patientId)
+            .then(patient => {
+                res.status(200).json({
+                    message: " Successfully Get a prescription for Patient with id = " + patientId,
+                    patients: patient
+                });
+            })
+            . catch(error => {
+              // log on console
+              console.log(error);
+      
+              res.status(500).json({
+                  message: "Error!",
+                  error: error
+              });
+            });
+      }
 
 // exports.filteringByAge = (req, res) => {
 //   let age = req.query.age;

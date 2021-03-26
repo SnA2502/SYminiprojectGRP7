@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
 	const Admin = sequelize.define('admin', {	
-	  admin_id: {
+	  id: {
 			type: Sequelize.INTEGER,
 			autoIncrement: true,
 			primaryKey: true
@@ -8,7 +8,10 @@ module.exports = (sequelize, Sequelize) => {
 	  firstname: {
 			type: Sequelize.STRING
 	  },
-	  lastname: {
+	  lastname:{
+		  type: Sequelize.STRING
+	  },
+	  email: {
 			type: Sequelize.STRING
   	},
 	   

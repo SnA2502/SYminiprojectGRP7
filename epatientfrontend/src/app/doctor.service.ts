@@ -37,16 +37,16 @@ export class DoctorService {
                   catchError(this.handleError)
                 );
 }
-//   getDoctor(doctor: Doctor): Observable<Message> {
-//     return this.http.get<Message>(`${this.baseUrl}` + `/all`, doctor)
-//                 .pipe(
-//                   retry(3),
-//                   catchError(this.handleError)
-//                 );
-// }
+retrieveAllDoctors(): Observable<Message> {
+  return this.http.get<Message>(`${this.baseUrl}` + `/all`)
+                .pipe(
+                  retry(3),
+                  catchError(this.handleError)
+                );
+}
 
-deleteDoctor(doctor: Doctor): Observable<Message> {
-  return this.http.put<Message>(`${this.baseUrl}` + `/delete`, doctor)
+deleteDoctor(id: number): Observable<Message> {
+  return this.http.delete<Message>(`${this.baseUrl}` + `/delete/` + id)
               .pipe(
                 retry(3),
                 catchError(this.handleError)
