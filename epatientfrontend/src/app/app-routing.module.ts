@@ -20,6 +20,8 @@ import {DocprescriptionComponent} from './docprescription/docprescription.compon
 import {PatprescriptionComponent} from './patprescription/patprescription.component';
 import {AddprescribComponent} from './addprescrib/addprescrib.component';
 import { ListdoctorComponent } from './listdoctor/listdoctor.component';
+import { ListpatientComponent } from './listpatient/listpatient.component';
+import { EditpatientComponent } from './editpatient/editpatient.component';
 
 const routes: Routes = [
 { path: '', redirectTo: '', pathMatch: 'full'},
@@ -32,7 +34,9 @@ const routes: Routes = [
 { path: 'admindetails', component: AdmindetailsComponent },
 { path: 'admaddpat', component: AdmaddpatComponent },
 { path: 'listdoctors', component: ListdoctorComponent},
+{ path: 'viewpatients', component: ListpatientComponent},
 { path: 'viewpatprof', component: ViewpatprofComponent },
+{ path: 'editpatient/:id', component: EditpatientComponent },
 { path: 'addoc', component: AddocComponent },
 { path: 'viewdocprof', component: ViewdocprofComponent },
 { path: 'docprescrib', component: DocprescribComponent},

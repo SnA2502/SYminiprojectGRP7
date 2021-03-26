@@ -8,6 +8,8 @@ const admin = require('../controllers/admin.controller.js');
 router.post('/api/patient/create', patient.create);
 router.get('/api/patient/all', patient.retrieveAllPatients);
 router.get('/api/patient/onebyid/:id', patient.getPatientById);
+router.put('/api/patient/prescription/:id', patient.createPrescription);
+router.get('/api/patient/getprescription/:id', patient.getPrescriptionById);
 // router.get('/api/patient/filteringbyage', patient.filteringByAge);
 // router.get('/api/patient/pagination', patient.pagination);
 // router.get('/api/patient/pagefiltersort', patient.pagingfilteringsorting);

@@ -28,7 +28,45 @@ export class PatientService {
                 );
 }
 
+get(id: number): Observable<any> {
+  return this.http.get<Message>(`${this.baseUrl}` + `/onebyid/` + id)
+              .pipe(
+                retry(3),
+                catchError(this.handleError)
+              );
+}
 
+updatePatient(patient: Patient): Observable<Message> {
+  return this.http.put<Message>(`${this.baseUrl}` + `/updatebyid/` + patient.id, patient)
+              .pipe(
+                retry(3),
+                catchError(this.handleError)
+              );
+}
+
+updatePatientPrescription(patient: Patient): Observable<Message> {
+  return this.http.put<Message>(`${this.baseUrl}` + `/prescription/` + patient.id, patient)
+              .pipe(
+                retry(3),
+                catchError(this.handleError)
+              );
+}
+
+retrieveAllPatients(): Observable<Message> {
+return this.http.get<Message>(`${this.baseUrl}` + `/all`)
+              .pipe(
+                retry(3),
+                catchError(this.handleError)
+              );
+}
+
+deletePatient(id: number): Observable<Message> {
+return this.http.delete<Message>(`${this.baseUrl}` + `/delete/` + id)
+            .pipe(
+              retry(3),
+              catchError(this.handleError)
+            );
+}
 
 private handleError(error: HttpErrorResponse) {
   if (error.error instanceof ErrorEvent) {

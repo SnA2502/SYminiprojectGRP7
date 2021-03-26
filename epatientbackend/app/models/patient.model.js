@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
 	const Patient = sequelize.define('patient', {	
-	  patient_id: {
+	  id: {
 			type: Sequelize.INTEGER,
 			autoIncrement: true,
 			primaryKey: true
@@ -16,7 +16,10 @@ module.exports = (sequelize, Sequelize) => {
 	  },
 	  age: {
 			type: Sequelize.INTEGER
-    }    
+    },
+	prescription: {
+		type: Sequelize.STRING(1024)
+	}    
 	});
 
 	return Patient;

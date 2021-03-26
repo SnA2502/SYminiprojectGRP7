@@ -22,4 +22,12 @@ db.sequelize = sequelize;
 db.Patient = require('../models/patient.model.js')(sequelize, Sequelize);
 db.Admin = require('../models/admin.model.js')(sequelize, Sequelize);
 db.Doctor = require('../models/doctor.model.js')(sequelize, Sequelize);
+// db.Prescription = require('../models/prescription.model')(sequelize, Sequelize);
+
+// db.Patient.hasMany(db.Prescription, { as: "prescriptions" });
+// db.Prescription.belongsTo(db.Patient, {
+//   foreignKey: "patientId",
+//   as: "patient",
+// });
+
 module.exports = db;

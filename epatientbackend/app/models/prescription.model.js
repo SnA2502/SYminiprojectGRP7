@@ -1,22 +1,22 @@
 module.exports = (sequelize, Sequelize) => {
-	const Prescription = sequelize.define('epres', {	
-	  pres_id: {
+	const Prescription = sequelize.define('prescription', {	
+	  id: {
 			type: Sequelize.INTEGER,
 			autoIncrement: true,
 			primaryKey: true
     },
-	  patient_id: {
-			type: Sequelize.INTEGER,
-            foreignKey: true
+	  medicine_name: {
+		  type: Sequelize.STRING,
 	  },
-	  doctor_id: {
-			type: Sequelize.INTEGER,
-            foreignKey: true
-  	},
-	  
-	  date: {
-			type: Sequelize.TIMESTAMP
-    }    
+	  dosage: {
+		  type: Sequelize.STRING,
+	  },
+	  frequency: {
+		  type: Sequelize.STRING,
+	  },	  
+	  duration: {
+			type: Sequelize.STRING,
+    }	  
 	});
 
 	return Prescription;
