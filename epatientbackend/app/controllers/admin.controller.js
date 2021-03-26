@@ -31,7 +31,7 @@ exports.getAdminById = (req, res) => {
     Admin.findByPk(adminId)
         .then(admin => {
             res.status(200).json({
-                message: " Successfully Get a Doctor with id = " + adminId,
+                message: " Successfully Get a Admin with id = " + adminId,
                 admins: admin
             });
         })

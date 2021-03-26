@@ -28,6 +28,7 @@ import { AddprescribComponent } from './addprescrib/addprescrib.component';
 import { MessageComponent } from './message/message.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ListdoctorComponent } from './listdoctor/listdoctor.component';
+import { ListpatientComponent } from './listpatient/listpatient.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { ListdoctorComponent } from './listdoctor/listdoctor.component';
     PatprescriptionComponent,
     AddprescribComponent,
     MessageComponent,
-    ListdoctorComponent
+    ListdoctorComponent,
+    ListpatientComponent,
   ],
   imports: [
     BrowserModule,

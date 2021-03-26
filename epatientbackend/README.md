@@ -64,20 +64,13 @@ ng g class patient
 ng g class message
 
 
-
-ng g service admin
-ng g service doctor
-
-ng g class admin
-ng g class doctor
-
 things to do
 --
 authentication
 profile name/id left corner
 add pages 
-   - patient list 
-   - doctor list
+   - view patient list (front and back)
+   - doctor list done
    - admin list *
    - edit doctor/patient
    - prescription page

@@ -7,8 +7,8 @@ const admin = require('../controllers/admin.controller.js');
 
 router.post('/api/patient/create', patient.create);
 router.get('/api/patient/all', patient.retrieveAllPatients);
-router.get('/api/patient/onebyid/:id', patient.getPatientById);
 router.delete('/api/patient/delete/:id',patient.deleteById); 
+router.get('/api/patient/onebyid/:id', patient.getPatientById);
 router.put('/api/patient/update/:id', patient.updateById);
 // router.get('/api/patient/filteringbyage', patient.filteringByAge);
 // router.get('/api/patient/pagination', patient.pagination);

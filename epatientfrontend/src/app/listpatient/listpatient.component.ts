@@ -1,63 +1,63 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Doctor } from '../doctor';
+import { Patient } from '../patient';
 import { MessageService } from '../message.service';
-import { DoctorService } from '../doctor.service';
+import { PatientService } from '../patient.service';
 import { Message } from '../message';
 
 @Component({
-  selector: 'app-listdoctor',
-  templateUrl: './listdoctor.component.html',
-  styleUrls: ['./listdoctor.component.css']
+  selector: 'app-listpatient',
+  templateUrl: './listpatient.component.html',
+  styleUrls: ['./listpatient.component.css']
 })
-export class ListdoctorComponent implements OnInit {
+export class ListpatientComponent implements OnInit {
 
-  doctors: Array<Doctor> = [];
-  showDoctor: Doctor;
+  patients: Array<Patient> = [];
+  showPatient: Patient;
   isSelected: boolean = false;
-  deletedDoctor: Doctor;
+  deletedPatient: Patient;
   returnedMessage: string;
 
-  constructor(private doctorService: DoctorService,
+  constructor(private patientService: PatientService,
     private messageService: MessageService) { }
 
-    setDoctorDetails(doctor: Doctor){
+    setPatientDetails(patient: Patient){
       this.isSelected=!this.isSelected;
       if(this.isSelected){
-        this.showDoctor = doctor;
+        this.showPatient = patient;
       }else{
-        this.showDoctor = undefined;
+        this.showPatient = undefined;
       }
     }
 
     /**
    * Set deletedDoctor and reset returnedMessage = undefined
-   * @param deleteDoctor
+   * @param deletePatient
    */
-  prepareDeleteDoctor(deleteDoctor: Doctor){
+  prepareDeletePatient(deletePatient: Patient){
     //assign delete-Doctor
-    this.deletedDoctor = deleteDoctor;
+    this.deletedPatient = deletePatient;
     // reset returned-Message
     this.returnedMessage = undefined;
   }
 
-  deleteDoctor(){
+  deletePatient(){
 
-    console.log("--- Access delelteDoctor() function");
+    console.log("--- Access deletePatient() function");
 
-    this.doctorService.deleteDoctor(this.deletedDoctor.id)
+    this.patientService.deletePatient(this.deletedPatient.id)
                       .subscribe((message: Message) => {
                           console.log(message);
-                          // remove a deletedDoctor from doctors list on view
-                          this.doctors = this.doctors.filter(doctor => {
-                            return doctor.id != this.deletedDoctor.id;
+                          // remove a deletedDoctor from patients list on view
+                          this.patients = this.patients.filter(patient => {
+                            return patient.id != this.deletedPatient.id;
                           })
 
                           // set a showing message in delete modal
                           this.returnedMessage = message.message;
 
                           // just reset showDoctor for not showing on view
-                          this.showDoctor = undefined;
+                          this.showPatient = undefined;
 
                           // add the delete message to message app for showing
                           this.messageService.add(message.message);
@@ -72,11 +72,11 @@ export class ListdoctorComponent implements OnInit {
   /**
    * Retrieve all Doctor from Backend
    */
-   retrieveAllDoctors() {
-    this.doctorService.retrieveAllDoctors()
+   retrieveAllPatients() {
+    this.patientService.retrieveAllPatients()
                   .subscribe((message: Message) => {
                     console.log(message);
-                    this.doctors = message.doctors;
+                    this.patients = message.patients;
                   }
                   , (error) => {
                     console.log(error);
@@ -84,7 +84,7 @@ export class ListdoctorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.retrieveAllDoctors();
+    this.retrieveAllPatients();
   }
 
 }

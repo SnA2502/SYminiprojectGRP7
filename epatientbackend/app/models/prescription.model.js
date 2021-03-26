@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
-	const Prescription = sequelize.define('epres', {	
-	  pres_id: {
+	const Prescription = sequelize.define('prescription', {	
+	  prescription_id: {
 			type: Sequelize.INTEGER,
 			autoIncrement: true,
 			primaryKey: true

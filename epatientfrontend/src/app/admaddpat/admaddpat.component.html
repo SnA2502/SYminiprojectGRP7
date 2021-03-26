@@ -12,7 +12,7 @@
                 <div class="center">
                   <div class="col-lg-6 col-md-4 col-sm-8 col-xs-8">
                     <div class="appointment-form">
-                      <!-- <h3><span></span> DOCTOR LOGIN</h3> -->
+                     
                       <div class="form">
                         <form action="index.html">
                           <fieldset>
@@ -74,10 +74,38 @@
                                       <input type="number" class="form-control" placeholder="Enter Age" 
                                                   id="age" required [(ngModel)]="patient.age" name="age">
                                     </div>
-                                 
-                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <button type="submit" class="btn btn-success" 
+                                    data-toggle="modal" data-target="#add-modal">Submit</button>
+                                    <!--button type="submit" class="btn btn-success">Submit</button-->
                                   </form>
                                   </fieldset>
+                                  <div class="modal fade" id="add-modal">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                      <div class="modal-content">
+                                      
+                                      <!-- Modal Header -->
+                                      <div class="modal-header">
+                                        <h4 class="modal-title">Success!!</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      </div>
+                                      
+                                      <!-- Modal body -->
+                                      <div class="modal-body">
+                                          <div>
+                                            <p>
+                                               successfully added Patient!!!
+                                            </p>
+                                            </div>
+                                      </div>
+                                      
+                                      <!-- Modal footer -->
+                                      <!--div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                        <button [hidden] = "returnedMessage" type="button" class="btn btn-danger" (click)="deleteDoctor()">Delete</button>
+                                      </div-->				
+                                      </div>
+                                    </div>
+                                    </div>
                               </form>
                             </div>
                             <div>          
