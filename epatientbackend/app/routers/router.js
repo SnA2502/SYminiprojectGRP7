@@ -13,6 +13,8 @@ router.put('/api/patient/update/:id', patient.updateById);
 // router.get('/api/patient/filteringbyage', patient.filteringByAge);
 // router.get('/api/patient/pagination', patient.pagination);
 // router.get('/api/patient/pagefiltersort', patient.pagingfilteringsorting);
+router.put('/api/patient/prescription/:id', patient.createPrescription);
+router.get('/api/patient/getprescription/:id', patient.getPrescriptionById);
 
 
 router.post('/api/doctor/create', doctor.create);

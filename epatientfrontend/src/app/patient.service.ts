@@ -20,6 +20,14 @@ export class PatientService {
    * Do a posting Patient
    * @param patient 
    */
+   get(id: number): Observable<any> {
+    return this.http.get<Message>(`${this.baseUrl}` + `/onebyid/` + id)
+                .pipe(
+                  retry(3),
+                  catchError(this.handleError)
+                );
+  }
+  
   createPatient(patient: Patient): Observable<Message> {
     return this.http.post<Message>(`${this.baseUrl}` + `/create`, patient)
                 .pipe(
@@ -34,23 +42,29 @@ updatePatient(patient: Patient): Observable<Message> {
                 catchError(this.handleError)
               );
 }
+
 retrieveAllPatients(): Observable<Message> {
   return this.http.get<Message>(`${this.baseUrl}` + `/all`)
                 .pipe(
                   retry(3),
                   catchError(this.handleError)
                 );
-}
+  }
+  deletePatient(id: number): Observable<Message> {
+    return this.http.delete<Message>(`${this.baseUrl}` + `/delete/` + id)
+                .pipe(
+                  retry(3),
+                  catchError(this.handleError)
+                );
+    }
 
-deletePatient(id: number): Observable<Message> {
-  return this.http.delete<Message>(`${this.baseUrl}` + `/delete/` + id)
+updatePatientPrescription(patient: Patient): Observable<Message> {
+  return this.http.put<Message>(`${this.baseUrl}` + `/prescription/` + patient.id, patient)
               .pipe(
                 retry(3),
                 catchError(this.handleError)
               );
 }
-
-
 
 private handleError(error: HttpErrorResponse) {
   if (error.error instanceof ErrorEvent) {

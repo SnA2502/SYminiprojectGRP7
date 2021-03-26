@@ -15,6 +15,8 @@ export class ListpatientComponent implements OnInit {
   patients: Array<Patient> = [];
   showPatient: Patient;
   isSelected: boolean = false;
+  currentPatient: null;
+  currentIndex: -1;
   deletedPatient: Patient;
   returnedMessage: string;
 
@@ -30,15 +32,26 @@ export class ListpatientComponent implements OnInit {
       }
     }
 
-    /**
+      /**
    * Set deletedDoctor and reset returnedMessage = undefined
    * @param deletePatient
    */
   prepareDeletePatient(deletePatient: Patient){
-    //assign delete-Doctor
+    //assign delete-Patient
     this.deletedPatient = deletePatient;
     // reset returned-Message
     this.returnedMessage = undefined;
+  }
+
+  // refreshList(): void {
+  //   this.retrieveAllPatients();
+  //   this.currentPatient = null;
+  //   this.currentIndex = -1;
+  // }
+
+  setActivePatient(patient, index): void {
+    this.currentPatient = patient;
+    this.currentIndex = index;
   }
 
   deletePatient(){
@@ -48,7 +61,7 @@ export class ListpatientComponent implements OnInit {
     this.patientService.deletePatient(this.deletedPatient.id)
                       .subscribe((message: Message) => {
                           console.log(message);
-                          // remove a deletedDoctor from patients list on view
+                          // remove a deletedDoctor from doctors list on view
                           this.patients = this.patients.filter(patient => {
                             return patient.id != this.deletedPatient.id;
                           })
@@ -70,7 +83,7 @@ export class ListpatientComponent implements OnInit {
   }
 
   /**
-   * Retrieve all Doctor from Backend
+   * Retrieve all Patient from Backend
    */
    retrieveAllPatients() {
     this.patientService.retrieveAllPatients()

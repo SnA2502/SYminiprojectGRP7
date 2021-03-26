@@ -1,10 +1,3 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { IntroComponent } from './intro/intro.component';
 import { PatientComponent } from './patient/patient.component';
 import { DoctorComponent } from './doctor/doctor.component';
 import { AdminComponent } from './admin/admin.component';
@@ -29,6 +22,7 @@ import { MessageComponent } from './message/message.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ListdoctorComponent } from './listdoctor/listdoctor.component';
 import { ListpatientComponent } from './listpatient/listpatient.component';
+import { EditpatientComponent } from './editpatient/editpatient.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +50,9 @@ import { ListpatientComponent } from './listpatient/listpatient.component';
     AddprescribComponent,
     MessageComponent,
     ListdoctorComponent,
+    
     ListpatientComponent,
+    EditpatientComponent
   ],
   imports: [
     BrowserModule,

@@ -1,51 +1,66 @@
 import { Injectable } from '@angular/core';
-
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-
 import { Observable, throwError  } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-
-import { Admin } from './admin';
+import { Patient } from './patient';
 import { Message } from './message';
-
-
 @Injectable({
   providedIn: 'root'
 })
-export class AdminService {
-
-  private baseUrl = 'http://localhost:5000/api/admin';
+export class PatientService {
+  private baseUrl = 'http://localhost:5000/api/patient';
   constructor(private http: HttpClient) { }
-
-
   /**
    * Do a posting Patient
-   * @param doctor 
+   * @param patient 
    */
-   createAdmin(admin: Admin): Observable<Message> {
-    return this.http.post<Message>(`${this.baseUrl}` + `/create`, admin)
+  createPatient(patient: Patient): Observable<Message> {
+    return this.http.post<Message>(`${this.baseUrl}` + `/create`, patient)
                 .pipe(
                   retry(3),
                   catchError(this.handleError)
                 );
 }
-/** 
-   getAdmin(admin: Admin): Observable<Message> {
-     return this.http.get<Message>(`${this.baseUrl}` + `/all`, admin)
-                 .pipe(
-                   retry(3),
-                   catchError(this.handleError)
-                 );
-                 }
-*/
-/*retrieveAllAdmin(admin: Admin): Observable<Message> {
-  return this.http.post<Message>(`${this.baseUrl}` + `/all`, admin)
+
+get(id: number): Observable<any> {
+  return this.http.get<Message>(`${this.baseUrl}` + `/onebyid/` + id)
               .pipe(
                 retry(3),
                 catchError(this.handleError)
               );
-}*/
+}
 
+updatePatient(patient: Patient): Observable<Message> {
+  return this.http.put<Message>(`${this.baseUrl}` + `/updatebyid/` + patient.id, patient)
+              .pipe(
+                retry(3),
+                catchError(this.handleError)
+              );
+}
+
+updatePatientPrescription(patient: Patient): Observable<Message> {
+  return this.http.put<Message>(`${this.baseUrl}` + `/prescription/` + patient.id, patient)
+              .pipe(
+                retry(3),
+                catchError(this.handleError)
+              );
+}
+
+retrieveAllPatients(): Observable<Message> {
+return this.http.get<Message>(`${this.baseUrl}` + `/all`)
+              .pipe(
+                retry(3),
+                catchError(this.handleError)
+              );
+}
+
+deletePatient(id: number): Observable<Message> {
+return this.http.delete<Message>(`${this.baseUrl}` + `/delete/` + id)
+            .pipe(
+              retry(3),
+              catchError(this.handleError)
+            );
+}
 
 private handleError(error: HttpErrorResponse) {
   if (error.error instanceof ErrorEvent) {
@@ -62,6 +77,4 @@ private handleError(error: HttpErrorResponse) {
   return throwError(
     'Something bad happened; please try again later.');
 };
-
-  
 }
