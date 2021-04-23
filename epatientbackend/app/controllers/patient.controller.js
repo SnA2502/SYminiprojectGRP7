@@ -1,33 +1,79 @@
 
 const db = require('../config/db.config.js');
 const Patient = db.Patient;
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
-
-exports.create = (req, res) => { 
-    let patient = {};
-
-    try{
-        // Building patient object from upoading request's body
-        patient.firstname = req.body.firstname;
-        patient.lastname = req.body.lastname;
-        patient.email = req.body.email;
-        patient.age = req.body.age;
-    
-        // Save to MySQL database
-        Patient.create(patient).then(result => {    
-            // send uploading message to client
-            res.status(200).json({
-                message: "Upload Successfully a patient with id = " + result.id,
-                patient: result,
+exports.create = (req, res) => {
+    Patient.findOne({where : {email: req.body.email} }) //findOne({ where: { title: 'My Title' } });
+    .then(patient =>{
+        if (patient) {
+            return res.status(409).json({
+                message: 'email already exists'
             });
-        });
-    }catch(error){
-        res.status(500).json({
-            message: "Fail!",
-            error: error.message
-        });
-    }
+        } else{
+            bcrypt.hash(req.body.contact_no, 10, (err,hash) => {
+                if (err){
+                    return res.status(500).json({
+                        error: err
+                    });
+                } else { 
+                    const patient = {};
+                    // const doctor = new Doctor({
+                        //id: new sequelize.DataTypes.ObjectId(),
+                        patient.firstname = req.body.firstname;
+                        patient.lastname = req.body.lastname;
+                         patient.email = req.body.email;
+                         patient.contact_no= req.body.contact_no;//encrypting phone as password
+                         patient.password= hash;
+                   // });
+                    // doctor
+                    // .save()
+                    Patient.create(patient)
+                    .then(result =>{
+                            console.log(result);
+                            res.status(201).json({
+                            message: 'Doctor created'
+                        });
+                    })
+                    .catch(err =>{
+                        console.log(err);
+                        res.status(500).json({
+                            error: err
+                        });
+                    });
+                }
+           })
+        }
+    })
+      
 }
+
+// exports.create = (req, res) => { 
+//     let patient = {};
+
+//     try{
+//         // Building patient object from upoading request's body
+//         patient.firstname = req.body.firstname;
+//         patient.lastname = req.body.lastname;
+//         patient.email = req.body.email;
+//         patient.age = req.body.age;
+    
+//         // Save to MySQL database
+//         Patient.create(patient).then(result => {    
+//             // send uploading message to client
+//             res.status(200).json({
+//                 message: "Upload Successfully a patient with id = " + result.id,
+//                 patient: result,
+//             });
+//         });
+//     }catch(error){
+//         res.status(500).json({
+//             message: "Fail!",
+//             error: error.message
+//         });
+//     }
+// }
 
 exports.retrieveAllPatients = (req, res) => { //executes
     // find all Patient information from 

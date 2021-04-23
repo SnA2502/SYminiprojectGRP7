@@ -22,7 +22,7 @@ import {AddprescribComponent} from './addprescrib/addprescrib.component';
 import { ListdoctorComponent } from './listdoctor/listdoctor.component';
 import { ListpatientComponent } from './listpatient/listpatient.component';
 import { EditpatientComponent } from './editpatient/editpatient.component';
-
+import { FListpatientComponent } from './flistpatient/flistpatient.component';
 const routes: Routes = [
 { path: '', redirectTo: '', pathMatch: 'full'},
 { path: 'intro', component: IntroComponent},
@@ -35,6 +35,7 @@ const routes: Routes = [
 { path: 'admaddpat', component: AdmaddpatComponent },
 { path: 'listdoctors', component: ListdoctorComponent},
 { path: 'viewpatients', component: ListpatientComponent},
+{ path: 'flistpatients', component: FListpatientComponent}, //
 { path: 'viewpatprof', component: ViewpatprofComponent },
 { path: 'editpatient/:id', component: EditpatientComponent },
 { path: 'addoc', component: AddocComponent },

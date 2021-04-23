@@ -1,29 +1,50 @@
 const db = require('../config/db.config.js');
 const Admin = db.Admin;
-exports.create = (req, res) => { 
-    let admin = {};
-
-    try{
-        // Building admin object from upoading request's body
-        admin.firstname = req.body.firstname;
-        admin.lastname = req.body.lastname;
-        admin.email = req.body.email;
-        
-    
-        // Save to MySQL database
-        Admin.create(admin).then(result => {    
-            // send uploading message to client
-            res.status(200).json({
-                message: "Upload Successfully a admin with id = " + result.id,
-                admin: result,
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+exports.create = (req, res) => {
+    Admin.findOne({where : {email: req.body.email} }) //findOne({ where: { title: 'My Title' } });
+    .then(admin =>{
+        if (admin) {
+            return res.status(409).json({
+                message: 'email already exists'
             });
-        });
-    }catch(error){
-        res.status(500).json({
-            message: "Fail!",
-            error: error.message
-        });
-    }
+        } else{
+            bcrypt.hash(req.body.contact_no, 10, (err,hash) => {
+                if (err){
+                    return res.status(500).json({
+                        error: err
+                    });
+                } else { 
+                    const admin = {};
+                    // const doctor = new Doctor({
+                        //id: new sequelize.DataTypes.ObjectId(),
+                        admin.firstname = req.body.firstname;
+                        admin.lastname = req.body.lastname;
+                        admin.email = req.body.email;
+                        admin.contact_no= req.body.contact_no;//encrypting phone as password
+                        admin.password= hash;
+                   // });
+                    // doctor
+                    // .save()
+                    Admin.create(admin)
+                    .then(result =>{
+                            console.log(result);
+                            res.status(201).json({
+                            message: 'Doctor created'
+                        });
+                    })
+                    .catch(err =>{
+                        console.log(err);
+                        res.status(500).json({
+                            error: err
+                        });
+                    });
+                }
+           })
+        }
+    })
+      
 }
 exports.getAdminById = (req, res) => { 
     // find all Admin information from 

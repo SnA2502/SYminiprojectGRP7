@@ -30,7 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListdoctorComponent } from './listdoctor/listdoctor.component';
 import { ListpatientComponent } from './listpatient/listpatient.component';
 import { EditpatientComponent } from './editpatient/editpatient.component';
-
+import { FListpatientComponent } from './flistpatient/flistpatient.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +58,8 @@ import { EditpatientComponent } from './editpatient/editpatient.component';
     MessageComponent,
     ListdoctorComponent,
     ListpatientComponent,
-    EditpatientComponent
+    EditpatientComponent,
+    FListpatientComponent
   ],
   imports: [
     BrowserModule,

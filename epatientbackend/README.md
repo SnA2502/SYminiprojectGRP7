@@ -81,3 +81,67 @@ add pages
    - prescription page
    - view prescriptions 
 logout
+exports.createPrescription = async (req, res) => {
+         try{
+         let patientId = req.params.id;
+         let patient = await Patient.findByPk(patientId);
+        
+         if(!patient){
+             // return a response to client
+                 res.status(404).json({
+                     message: "Not Found for updating a patient with id = " + patientId,
+                     patient : "",
+                     error: "404"
+                });
+             } else {    
+                 // update new change to database
+        //          var product = new Products({
+        //   productName: req.body.productName,
+        //   productDescription: req.body.productDescription,
+        //   size: req.body.productStock.size,
+        //   productThumbnail: filename
+        // });
+        // product.save(function(err, result){
+        //   if(err){}
+        //     res.json(result);
+        // });
+                 let newPrescription = {
+                    pres : req.body.prescription
+                 }
+                 newPrescription.save(function(err, result){
+                       if(err){}
+                         res.json(result);
+                     });
+                
+                // let result = await Patient.save(newPrescription, {returning: true, where: {id: patientId}});
+                
+                // return the response to client
+                //  if(!result) {
+                //     res.status(500).json({
+                //          message: "Error -> Can not update a patient with id = " + req.params.id,
+                //          error: "Can not Update Prescription",
+                //      });
+                //  }
+    
+                 res.status(200).json({
+                     message: "Update successfully a Patient with id = " + patientId,
+                     patient: updatedObject,
+                 });
+             }
+         } catch(error){
+             res.status(500).json({
+                 message: "Error -> Can not update a patient with id = " + req.params.id,
+                 error: error.message
+             });
+         }
+     }
+     //model....
+     prescription: [
+			{
+				id: {type: Number,
+					autoIncrement: true,
+					// primaryKey: true,
+
+				},
+				pres: {type: String, required: false}
+		}],

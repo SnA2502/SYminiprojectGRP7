@@ -39,8 +39,8 @@ export class AddocComponent implements OnInit {
                   + "<li>id: " + doctor.id + "</li>"  
                   + "<li>firstname: " + doctor.firstname + "</li>"
                   + "<li>lastname: " + doctor.lastname + "</li>"
-                  + "<li>age: " + doctor.age + "</li>"
-                  + "<li>address: " + doctor.email + "</li>"
+                  + "<li>email: " + doctor.email + "</li>"
+                  + "<li>contact_no: " + doctor.contact_no + "</li>"
               + "</ul>";
 
           this.messageService.add(msg);
@@ -51,8 +51,8 @@ export class AddocComponent implements OnInit {
                       + "<li>id = " + this.doctor.id + "</li>"  
                       + "<li>firstname = " + this.doctor.firstname + "</li>"
                       + "<li>lastname = " + this.doctor.lastname + "</li>"
-                      + "<li>age = " + this.doctor.age + "</li>"
-                      + "<li>address = " + this.doctor.email + "</li>"
+                      + "<li>email: " + this.doctor.email + "</li>"
+                  + "<li>contact_no: " + this.doctor.contact_no + "</li>"
                     + "</ul>";
 
           this.messageService.add(msg);

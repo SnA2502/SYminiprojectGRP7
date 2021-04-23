@@ -1,8 +1,8 @@
 const env = {
-  database: 'xsguchft',
-  username: 'xsguchft',
-  password: 'Nu0FM41OkheedK61hkZVrYvfqWS-rr2a',
-  host: 'queenie.db.elephantsql.com',
+  database: 'justindb',
+  username: 'postgres',
+  password: 'postgres',
+  host: 'localhost',
   dialect: 'postgres',
   pool: {
     max: 5,
@@ -10,6 +10,8 @@ const env = {
     acquire: 30000,
     idle: 10000
   }
+ ,JWT_KEY : 'secret'
+  
 };
 
 module.exports = env;

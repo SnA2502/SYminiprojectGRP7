@@ -19,7 +19,7 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                              
                               <div class="form-group">
-                                <h2 align="center">ADD DOCTOR</h2>
+                                <h2 align="center">DOCTOR REGISTRATION</h2>
                               </div>
                             </div>
                             <div>
@@ -47,16 +47,45 @@
                                                     id="email" required [(ngModel)]="doctor.email" name="email">
                                       </div>        
                                       
-                                      <!-- Age -->
+                                      <!-- contact no -->
                                       <div class="form-group">
-                                        <label for="age">Age</label>
-                                        <input type="number" class="form-control" placeholder="Enter Age" 
-                                                    id="age" required [(ngModel)]="doctor.age" name="age">
+                                        <label for="contact_no">Contact no:</label>
+                                        <input type="text" class="form-control" placeholder="Enter Contact number" 
+                                                    id="contact_no" required [(ngModel)]="doctor.contact_no" name="contact_no">
                                       </div>
                                    
-                                      <button type="submit" class="btn btn-success">Submit</button>
+                                      <button type="submit" class="btn btn-success" 
+                                    data-toggle="modal" data-target="#add-modal">Submit</button>
                                     </form>
                                     </fieldset>
+                                    <div class="modal fade" id="add-modal">
+                                      <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+  
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                          <h4 class="modal-title">Success!!</h4>
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+  
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <div>
+                                              <p>
+                                                Doctor successfully added !!!
+                                              </p>
+                                              </div>
+                                        </div>
+  
+                                        <!-- Modal footer -->
+                                        <!--div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                          <button [hidden] = "returnedMessage" type="button" class="btn btn-danger" (click)="deleteDoctor()">Delete</button>
+                                        </div-->				
+                                        </div>
+                                      </div>
+                                      </div>
+                                
                                 </form>
                               </div>
                             </div>

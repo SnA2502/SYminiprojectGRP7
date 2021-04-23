@@ -38,8 +38,8 @@ export class PatientComponent implements OnInit {
                     + "<li>id: " + patient.id + "</li>"  
                     + "<li>firstname: " + patient.firstname + "</li>"
                     + "<li>lastname: " + patient.lastname + "</li>"
-                    + "<li>age: " + patient.age + "</li>"
-                    + "<li>address: " + patient.email + "</li>"
+                    + "<li>email: " + patient.email + "</li>"
+                    + "<li>contact: " + patient.contact_no + "</li>"
                 + "</ul>";
 
             this.messageService.add(msg);
@@ -50,8 +50,8 @@ export class PatientComponent implements OnInit {
                         + "<li>id = " + this.patient.id + "</li>"  
                         + "<li>firstname = " + this.patient.firstname + "</li>"
                         + "<li>lastname = " + this.patient.lastname + "</li>"
-                        + "<li>age = " + this.patient.age + "</li>"
-                        + "<li>address = " + this.patient.email + "</li>"
+                        + "<li>email: " + this.patient.email + "</li>"
+                        + "<li>contact: " + this.patient.contact_no + "</li>"
                       + "</ul>";
 
             this.messageService.add(msg);

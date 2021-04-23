@@ -16,6 +16,9 @@ router.get('/api/patient/getprescription/:id', patient.getPrescriptionById);
 // router.put('/api/patient/update/:id', patient.updateById);
 
 router.post('/api/doctor/create', doctor.create);
+router.post('/api/doctor/login', doctor.login);
+router.get('/logout/:token',doctor.logout);
+//router.get('/api/doctor/me', doctor.me);
 router.get('/api/doctor/all', doctor.retrieveAllDoctor);
 router.delete('/api/doctor/delete/:id',doctor.deleteById); 
 router.get('/api/doctor/onebyid/:id', doctor.getDoctorById);

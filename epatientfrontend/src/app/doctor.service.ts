@@ -29,6 +29,13 @@ export class DoctorService {
                   catchError(this.handleError)
                 );
 }
+ login(doctor: Doctor): Observable<Message> {
+  return this.http.post<Message>(`${this.baseUrl}` + `/login`, doctor)
+              .pipe(
+                retry(3),
+                catchError(this.handleError)
+              );
+}
 
   updateDoctor(doctor: Doctor): Observable<Message> {
     return this.http.put<Message>(`${this.baseUrl}` + `/updatebyid/` + doctor.id, doctor)

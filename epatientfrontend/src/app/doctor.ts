@@ -3,5 +3,5 @@ export class Doctor {
 	firstname: string;
     lastname: string;
 	email: string;
-	age: number
+	contact_no: string
 }
